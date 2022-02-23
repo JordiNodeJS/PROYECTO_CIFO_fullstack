@@ -11,14 +11,15 @@ require_once 'inc/templates/header.php';
         </div>
         <div class="campo">
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password" placeholder="Pon tu contraseña" value="password_demo">
+            <input type="password" name="password" id="password" placeholder="Pon tu contraseña" value="demo">
         </div>
         <div class="campo enviar">
+            <!-- este campo oculto no se envía adjunta al FormData, debes adherirlo con el método append -->
             <input type="hidden" id="tipo" value="crear">
             <input type="submit" class="boton" value="Crear cuenta">
         </div>
         <div class="campo">
-            <a href="login.html">Inicia Sesión Aquí</a>
+            <a href="login.php">Inicia Sesión Aquí</a>
         </div>
     </form>
 </div>

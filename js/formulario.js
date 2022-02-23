@@ -21,48 +21,92 @@ const validarRegistro = e => {
       confirmButtonText: 'Vale tío?',
     })
   } else {
-    // datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
+    // -------------------------------- START
+    // --------------------------------
+    // debes rellenar todo, todito como buen chico
+    //  datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
+    //  manera antigua de hacerlo
+    // const datos = new FormData()
+    // datos.append('usuario', usuario)
+    // datos.append('password', password)
+    // datos.append('accion', tipo)
+    // console.log(datos.get('usuario'))
+    // console.log(typeof datos)
 
-    // const formData = new FormData(document.querySelector('#formulario'))
+    // const xhr = new XMLHttpRequest()
+    // xhr.open('POST', url, true)
 
-    // fetch(url, {
-    //   method: 'POST',
-    //   body: formData,
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data)
-    //   })
-    //   .catch(err => console.log('Error en la llamada fetch'))
-    // //////////////////////////////////////////////////////////////////
+    // xhr.onload = function () {
+    //   if (this.status === 200)
+    //     // console.log(xhr.responseText)
+
+    //     console.log(JSON.parse(xhr.responseText))
+
+    // }
+
+    // xhr.send(datos)
+    // --------------------------------
+    // -------------------------------- END
+
+    // Enviar la petición: todo lo que tenga el FormData
+    // refactorizar end
+
+    // ////////////////  START
+    // ////////////////
+
+    // // datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
 
     const formData = new FormData(document.querySelector('#formulario'))
-    const request = async () => {
-      try {
-        const options = {
-          method: 'POST',
-          body: formData,
-        }
+    // FormData recoge los valors del siempre y cuando no sean valores ocultos
 
-        const response = await fetch(url, options)
-        if (response.ok) {
-          return await response.json()
-        } else {
-          throw new Error(response.statusText)
-        }
-      } catch (err) {
-        console.log('Error al realizar la petición AJAX: ' + err.message)
-      }
-    }
-    request().then(data => console.log(data))
+    // con este método, en caso de que el campo sea un valor oculto, se añade ese campo con este método
+    formData.append('accion', tipo)
 
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500,
+    // debugging
+    // console.log(formData.get('usuario'));
+    // console.log(formData.get('password'));
+    // console.log(formData.get('accion'));
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
     })
+      .then(response => response.json()) // https://programmerclick.com/article/74842224217/ si da error pasar a response.text() para analizar el resulatdo
+      .then(data => {
+        console.log(data)
+        // if data is right
+        if (data.response == 'right' && data.type_action == 'crear') {
+          // si es un nuevo usuario actual https://sweetalert2.github.io/
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario creado',
+            text: 'El usuario se creó corréctamente',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+          })
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+        }
+      })
+      .catch(error => console.log('Error en la llamada fetch:', error.message))
+
+    // ////////////////
+    // //////////////// END
+
+    // Swal.fire({
+    //   position: 'center',
+    //   icon: 'success',
+    //   title: 'Your work has been saved',
+    //   showConfirmButton: false,
+    //   timer: 1500,
+    // })
   }
 }
 
