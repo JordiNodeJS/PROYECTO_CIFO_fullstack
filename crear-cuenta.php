@@ -3,15 +3,15 @@ require_once 'inc/funciones/funciones.php';
 require_once 'inc/templates/header.php';
 ?>
 <div class="contenedor-formulario">
-    <h1>UpTask <span>Crear Cuenta</span></h1>
-    <form id="formulario" class=" caja-login" method="post">
+    <h1>BOOKMARK <span> Crear Cuenta</span></h1>
+    <form id="formulario" class="caja-login" method="post">
         <div class="campo">
             <label for="usuario">Usuario: </label>
-            <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+            <input type="text" name="usuario" id="usuario" placeholder="Usuario" value="demo">
         </div>
         <div class="campo">
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password" placeholder="Pon tu contraseña">
+            <input type="password" name="password" id="password" placeholder="Pon tu contraseña" value="password_demo">
         </div>
         <div class="campo enviar">
             <input type="hidden" id="tipo" value="crear">

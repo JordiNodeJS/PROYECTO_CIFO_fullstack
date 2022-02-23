@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Título</title>
+  <link rel="stylesheet" href="../css/sweetalert2.min.css">
+  <script defer src="../js/sweetalert2.all.min.js"></script>
+</head>
+<body>
+
+<div class="contenedor-formulario">
+    <h1>BOOKMARK <span> Crear Cuenta</span></h1>
+    <form id="formulario" class="caja-login" method="post">
+        <div class="campo">
+            <label for="usuario">Usuario: </label>
+            <input type="text" name="usuario" id="usuario" placeholder="Usuario" value="demo">
+        </div>
+        <div class="campo">
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" placeholder="Pon tu contraseña" value="password_demo">
+        </div>
+        <div class="campo enviar">
+            <input type="hidden" id="tipo" value="crear">
+            <input type="submit" class="boton" value="Crear cuenta">
+        </div>
+        <div class="campo">
+            <a href="login.html">Inicia Sesión Aquí</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    const validarRegistro = e => {
+  e.preventDefault()
+
+  const url = 'servidor-cliente.php'
+
+  let usuario = document.querySelector('#usuario').value,
+    password = document.querySelector('#password').value,
+    tipo = document.querySelector('#tipo').value
+  // console.log(usuario, password)
+
+  if (usuario === '' || password === '') {
+    // la validación se falló, uah, uah, uah
+    Swal.fire({
+      icon: 'error',
+      title: '¡Vaya!',
+      text: 'Dejaste los campos del formulario vacío',
+      color: 'darkred',
+      background: 'lightblue',
+      iconColor: 'peru',
+      confirmButtonColor: 'purple',
+      confirmButtonText: 'Vale tío?',
+    })
+  } else {
+    // debes rellenar todo, todito como buen chico
+
+    // datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
+   // manera antigua de hacerlo
+    // const datos = new FormData()
+    // datos.append('usuario', usuario)
+    // datos.append('password', password)
+    // datos.append('accion', tipo)
+    // console.log(datos.get('usuario'))
+    // console.log(typeof datos)
+
+
+    // const xhr = new XMLHttpRequest()
+    // xhr.open('POST', url, true)
+
+    // xhr.onload = function () {
+    //   if (this.status === 200)
+    //     // console.log(xhr.responseText)
+
+    //     console.log(JSON.parse(xhr.responseText))
+    //   console.log(xhr.responseText)
+    // }
+
+    // xhr.send(datos)
+
+    // Enviar la petición: todo lo que tenga el FormData
+    // refactorizar end
+
+
+// //////////////////   1ª manera: datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
+    const formData = new FormData(document.querySelector('#formulario'))
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => console.log('Error en la llamada fetch'))
+
+
+// ////////////////// 2ª manera: datos que envío
+    // const datos = new FormData(document.getElementById('formulario'));
+    // fetch(url, {
+    //   method: 'POST',
+    //   body: datos,
+    // })
+    //   .then(response => {
+    //     if (response.ok) {
+    //       return response.json()
+    //     } else {
+    //       throw 'Error en la llamada Ajax'
+    //     }
+    //   })
+    //   .then(data => {
+    //     console.log(data)
+    //   })
+
+
+
+    // fetch(url).then(res => {
+    //   if (res.ok) {
+    //     return res.json()
+    //   } else {
+    //     return 'Error-HTTP: ' + res.status
+    //   }
+    // }).then(result => console.log(result))
+
+    // https://www.espai.es/blog/2019/09/como-enviar-y-recibir-datos-con-la-api-fetch/
+    // const request = async () => {
+    //   try {
+    //     const options = {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(datos),
+    //     }
+
+    //     const response = await fetch(URL, options)
+    //     if (response.ok) {
+    //       let respuesta = await response.text()
+    //       return respuesta
+    //     } else {
+    //       throw new Error(response.statusText)
+    //     }
+    //   } catch (err) {
+    //     console.log('Error al realizar la petición AJAX: ' + err.message)
+    //   }
+    // }
+
+    //  request().them(data => console.log(data))
+
+
+
+        // const request = async URL => {
+    //   const response = await fetch(URL)
+    //   if (!response.ok) throw new Error('WARN', response.status)
+    //   const data = await response.text()
+    //   return data
+    // }
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  }
+}
+
+const eventListener = () =>
+  document
+    .querySelector('#formulario')
+    .addEventListener('submit', validarRegistro)
+
+eventListener()
+
+</script>
+
+
+</body>
+</html>
