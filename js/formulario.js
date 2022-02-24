@@ -75,23 +75,27 @@ const validarRegistro = e => {
       .then(data => {
         console.log(data)
         // if data is right
-        if (data.response == 'right' && data.type_action == 'crear') {
+        if (data.response == 'right') {
           // si es un nuevo usuario actual https://sweetalert2.github.io/
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Usuario creado',
-            text: 'El usuario se creó corréctamente',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-          })
+          if (data.type_action == 'crear') {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Usuario creado',
+              text: 'El usuario se creó corréctamente',
+              showConfirmButton: false,
+              timer: 2500,
+              timerProgressBar: true,
+            })
+          } else if (data.type_action == 'login'){
+            // TO DO
+          }
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Something went wrong!',
-            footer: '<a href="">Why do I have this issue?</a>'
+            footer: '<a href="">Why do I have this issue?</a>',
           })
         }
       })

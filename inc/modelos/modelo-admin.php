@@ -1,6 +1,6 @@
 <?php
-header("Content-type: application/json; charset=utf-8");
-error_reporting(0);
+// header("Content-type: application/json; charset=utf-8");
+// error_reporting(0);
 $usuario = $_POST['usuario'];
 $password = $_POST['password'];
 $accion = $_POST['accion'];
@@ -31,12 +31,50 @@ if ($accion == 'crear') {
                 'insert_id' => $stmt->insert_id,
                 'type_action' => $accion
             ];
-        }
-        else {
+        } else {
             $respuesta = [
                 'response' => 'error'
             ];
         }
+
+        $stmt->close();
+        $conn->close();
+    } catch (Exception $e) {
+        // en caso de que la conexión falle la cazamos y la mostramos
+        $respuesta = ['Exception message: ' => $e->getMessage()];
+    }
+    echo json_encode($respuesta);
+}
+if ($accion == 'login') {
+    include '../funciones/conexion.php';
+    try {
+        // seleccionamos el administrador de la base de datos.
+        $stmt = $conn->prepare("SELECT usuario, id, password FROM usuarios WHERE usuario = ?");
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+
+        $stmt->bind_result($nombre_usuario, $id_usuario, $pass_usuario);
+        $stmt->fetch();
+        if ($nombre_usuario) {
+            // Ahora que el usuario existe, verificamos la contraseña
+            if (password_verify($password, $pass_usuario)) {
+                $respuesta = [
+                    'response' => 'right',
+                    'nombre' => $nombre_usuario,
+                    'id' => $id_usuario,
+                    'password' => $pass_usuario,
+                    'columnas' => $stmt->affected_rows
+
+                ];
+            } else {
+                $respuesta = ['resultado' => 'Contraseña fallida!!!'];
+            }
+        } else {
+            $respuesta = [
+                'error' => 'Ese usuario como que va a ser que no existe'
+            ];
+        }
+
 
         $stmt->close();
         $conn->close();

@@ -8,11 +8,11 @@ require_once 'inc/templates/header.php';
         <form id="formulario" class="caja-login" method="post">
             <div class="campo">
                 <label for="usuario">Usuario: </label>
-                <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <input type="text" name="usuario" id="usuario" placeholder="Usuario" value="admin">
             </div>
             <div class="campo">
                 <label for="password">Password: </label>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password" value="admin">
             </div>
             <div class="campo enviar">
                 <input type="hidden" id="tipo" value="login">
@@ -20,7 +20,7 @@ require_once 'inc/templates/header.php';
             </div>
 
             <div class="campo">
-                <a href="crear-cuenta.html">Crea una cuenta nueva</a>
+                <a href="crear-cuenta.php">Crea una cuenta nueva</a>
             </div>
         </form>
     </div>
