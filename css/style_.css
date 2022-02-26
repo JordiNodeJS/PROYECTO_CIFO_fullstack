@@ -1,0 +1,34 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    min-height: 100%;
+    background-color: #f1d589;
+}
+
+
+/* dashboard color: #3ab7bc */
+
+
+
+/** Login **/
+
+.contenedor-formulario {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.contenedor-formulario h1 {
+    text-align: center;
+    color: #1f8f64;
+}
+.contenedor-formulario h1  span{
+    font-weight: 400;
+    font-size: 1.2rem;
+}

@@ -9,3 +9,16 @@ CREATE TABLE usuarios (
     password VARCHAR(60),
     UNIQUE (usuario, password)
 ) ENGINE = InnoDB;
+
+CREATE TABLE proyectos (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(180)
+) ENGINE = InnoDB;
+
+CREATE TABLE tareas (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(180),
+    estado INT(1),
+    id_proyecto INT(11),
+    FOREIGN KEY (id_proyecto) REFERENCES proyectos(id)
+) ENGINE = InnoDB;
