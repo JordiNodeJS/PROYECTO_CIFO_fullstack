@@ -45,6 +45,7 @@ if ($accion == 'crear') {
     }
     echo json_encode($respuesta);
 }
+
 if ($accion == 'login') {
     include '../funciones/conexion.php';
     try {
@@ -58,10 +59,20 @@ if ($accion == 'login') {
         if ($nombre_usuario) {
             // Ahora que el usuario existe, verificamos la contraseña
             if (password_verify($password, $pass_usuario)) {
+                // Iniciamo la sesión
+                session_start();
+                $_SESSION = [
+                    'nombre' => $usuario,
+                    'id' => $id_usuario,
+                    'login' => true
+                ];
+
+                // respuesta al login correcto
                 $respuesta = [
                     'response' => 'right',
                     'nombre' => $nombre_usuario,
                     'id' => $id_usuario,
+                    'type_action' => $accion,
                     'password' => $pass_usuario,
                     'columnas' => $stmt->affected_rows
 

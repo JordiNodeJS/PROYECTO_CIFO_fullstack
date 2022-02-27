@@ -73,7 +73,7 @@ const validarRegistro = e => {
     })
       .then(response => response.json()) // https://programmerclick.com/article/74842224217/ si da error pasar a response.text() para analizar el resulatdo
       .then(data => {
-        console.log(data)
+        console.log(data.response)
         // if data is right
         if (data.response == 'right') {
           // si es un nuevo usuario actual https://sweetalert2.github.io/
@@ -88,7 +88,17 @@ const validarRegistro = e => {
               timerProgressBar: true,
             })
           } else if (data.type_action == 'login'){
-            // TO DO
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login',
+              text: 'Logeado corréctamente!',
+              showConfirmButton: true
+            })
+            .then(resultado => {
+              if(resultado.value == true)
+                window.location.href= 'index.php'
+            })
           }
         } else {
           Swal.fire({

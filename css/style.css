@@ -57,8 +57,8 @@ html {
 html {
   height: 100vh;
   overflow-y: auto;
-  font: 100%/1.4 serif;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  /* font: 100%/1.4 serif; */
+  /* border: 1px solid rgba(0, 0, 0, 0.25); */
 }
 /* scroll end */
 
@@ -68,9 +68,9 @@ body {
   background-color: var(--light-shades);
 }
 
-
-
-
+#nuevo-proyecto {
+  margin-bottom: 7px;
+}
 
 .contenedor-formulario {
   display: flex;
@@ -103,6 +103,7 @@ body {
 }
 .campo {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
   align-items: center;
 }
@@ -130,12 +131,20 @@ body {
   border: none;
   box-shadow: inset 0px 1px 8px 0px var(--light-accent);
 }
+.agretar-tarea {
+  display: inline-block;
+  background-color: var(--main-brand-color);
+  margin: 0 auto;
+  padding: 0.4rem;
+  height: auto;
+  transition: background-color 0.5s ease-in-out;
+}
 
 .enviar {
   justify-content: flex-end;
 }
 .boton {
-    color: black;
+  color: black;
   background-color: var(--light-shades);
   text-align: center;
   transition: background-color 0.5s ease-in-out;
@@ -173,7 +182,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: -1px 8px 15px -9px #000000;
+  box-shadow: 10px 8px 15px -9px #000000;
 }
 .barra h1 {
   color: white;
@@ -196,26 +205,20 @@ body {
   padding: 1rem;
   margin: 1rem;
 }
-.panel a {
-  color: white;
+.panel > a {
+  text-decoration: none;
+}
+.panel li a {
+  color: var(--light-shades);
+  width: 20ch;
   font-weight: bold;
   text-decoration: none;
 }
-.panel h2 {
-  color: #fdd835;
-  font-weight: 900;
-  text-align: center;
-  font-size: 2rem;
-  margin: 0;
+.panel li a:hover {
+  color: white;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(255, 255, 255, 0.5);
 }
-
-.crear-proyecto i {
-  margin-left: 1rem;
-}
-.crear-proyecto a {
-  color: #676849;
-}
-
 .lista-proyectos ul {
   list-style: none;
   padding: 1.5rem 0 0 0;
@@ -224,8 +227,21 @@ body {
 .lista-proyectos ul li {
   margin-bottom: 1rem;
 }
-.lista-proyectos ul li a:hover {
-  color: #fdd835;
+
+.panel h2 {
+  color: var(--light-shades);
+  font-weight: 900;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  /* box-shadow: inset 0px 1px 8px 0px var(--light-accent); */
+}
+
+.crear-proyecto i {
+  margin-left: 1rem;
+}
+.crear-proyecto a {
+  color: #676849;
 }
 
 /** Contenido Principal */
@@ -258,7 +274,7 @@ body {
   background-color: var(--main-brand-color);
   margin: 0 auto;
   padding: 2rem;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 /** Listado Pendientes **/

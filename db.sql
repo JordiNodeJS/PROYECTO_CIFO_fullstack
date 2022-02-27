@@ -18,7 +18,7 @@ CREATE TABLE proyectos (
 CREATE TABLE tareas (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(180),
-    estado INT(1),
+    estado SMALLINT(1),
     id_proyecto INT(11),
     FOREIGN KEY (id_proyecto) REFERENCES proyectos(id)
 ) ENGINE = InnoDB;
