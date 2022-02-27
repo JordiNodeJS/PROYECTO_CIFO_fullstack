@@ -1,8 +1,12 @@
 const $listaProyectos = document.querySelector('ul#proyectos')
 const $crearProyecto = document.querySelector('.crear-proyecto a')
+const $nuevaTarea = document.querySelector('.nueva-tarea')
 
-const eventListeners = () =>
+const eventListeners = () => {
   $crearProyecto.addEventListener('click', nuevoProyecto) // añadimos el botón que nos creará el proyecto, bookmark o tarjeta
+  // agregar tarea
+  $nuevaTarea.addEventListener('click', addingTask)
+}
 
 const quitaAgregarNuevoProyecto = () =>
   $crearProyecto.removeEventListener('click', nuevoProyecto)
@@ -100,6 +104,60 @@ function guardarProyectoDB(nombreProyecto) {
       )
     })
 }
+
+// adding task
+
+function addingTask(e) {
+  e.preventDefault()
+  const $nombreTarea = document.querySelector('.nombre-tarea').value
+
+  if ($nombreTarea === '') {
+    alert('Rellena el bookmark algo. Un bookmark no puede ir vacío.')
+  } else {
+    // insert into tareas
+    const url = 'inc/modelos/molelo-tareas.php'
+    const formData = new FormData()
+    formData.append('tarea', $nombreTarea)
+    formData.append('type_action', 'crear')
+    formData.append('id_proyecto', document.querySelector('#id_proyecto').value)
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(data => {
+        const {response, id_inserted, type_action, tarea } = data
+        // console.log( `${response}, ${id_inserted}, ${type_action}, ${tarea}`)
+        if (response == 'right'){
+          if(type_action == 'crear'){
+            alert('alerta creada')
+            // crear el html de tareas
+            const newTask = document.createElement('li')
+
+            newTask.id = 'tarea:'+ id_inserted
+            newTask.classList.add('tarea')
+
+            newTask.innerHTML = `
+              <p>${tarea}</p>
+              <div class="acciones">
+                <i class="fas fa-check"></i>
+                <i class="fas fa-trash"></i>
+              </div>
+            `
+            const listado = document.querySelector('.listado-pendientes ul')
+            listado.appendChild(newTask)
+
+            // resteando la formulario o input
+            document.querySelector('.agregar-tarea').reset()
+
+          }
+        } else alert('otro error!')
+      })
+      .catch(e => console.log('error !! ', e))
+  }
+}
+
 // function guardarProyectoDB(nombreProyecto) {
 //   console.log(nombreProyecto)
 //   const nuevoProyecto = document.createElement('li')

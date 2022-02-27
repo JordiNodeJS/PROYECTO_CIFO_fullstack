@@ -28,7 +28,6 @@ require_once 'inc/templates/barra.php';
 
 
         if($proyecto): ?>
-            <?= print_r($proyecto) ?>
            <?php foreach($proyecto as $item) : ?>
                 <span><?=  $item['nombre']; ?></span>
 
