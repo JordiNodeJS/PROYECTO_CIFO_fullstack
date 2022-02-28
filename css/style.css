@@ -306,7 +306,7 @@ body {
 .acciones i:last-child {
   margin-left: 3rem;
 }
-.completo {
+.checked {
   color: #00b762;
 }
 .alerta {

@@ -27,11 +27,11 @@ require_once 'inc/templates/barra.php';
             $proyecto = obtenerNombreProyecto($id_proyecto);
 
 
-        if($proyecto): ?>
-           <?php foreach($proyecto as $item) : ?>
-                <span><?=  $item['nombre']; ?></span>
+            if ($proyecto) : ?>
+                <?php foreach ($proyecto as $item) : ?>
+                    <span><?= $item['nombre']; ?></span>
 
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
 
         </h1>
@@ -42,34 +42,52 @@ require_once 'inc/templates/barra.php';
                 <input type="text" placeholder="Nombre Tarea" class="nombre-tarea">
             </div>
             <div class="campo enviar">
-                <input type="hidden" id="id_proyecto" value="<?=  $id_proyecto ?>">
+                <input type="hidden" id="id_proyecto" value="<?= $id_proyecto ?>">
                 <input type="submit" class="boton nueva-tarea" value="Agregar">
             </div>
         </form>
 
-        <?php
-            else:
+    <?php
+            else :
                 echo "Selecciona un proyecto";
             endif;
 
 
-        ?>
+    ?>
 
 
-        <h2>Listado de tareas:</h2>
+    <h2>Listado de tareas:</h2>
 
-        <div class="listado-pendientes">
-            <ul>
+    <div class="listado-pendientes">
+        <ul>
+            <?php
+            // Fetching currents takses FROM proyecto
+            $tareas = obtenerTareaProyecto($id_proyecto);
+            // echo "<pre>";
+            //     var_dump($tareas->num_rows);
+            // echo "</pre>";
 
-                <li id="tarea:<?php echo $tarea['id'] ?>" class="tarea">
-                    <p>Cambiar el Logotipo</p>
-                    <div class="acciones">
-                        <i class="far fa-check-circle"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            if ($tareas->num_rows > 0) {
+                // si hay tareas
+                foreach ($tareas as $tarea) : ?>
+                    <li id="tarea_<?= $tarea['id']; ?>" class="tarea">
+                        <p><?= $tarea['nombre']; ?></p>
+                        <div class="acciones">
+                            <i class="far fa-check-circle <?= ($tarea['estado'] == 1)? 'checked': ''; ?>"></i>
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </li>
+
+            <?php endforeach;
+            } else {
+                // no hay tareas
+                echo "<p>No hay tareas</p>";
+            }
+            ?>
+
+
+        </ul>
+    </div>
     </main>
 </div>
 <!--.contenedor-->

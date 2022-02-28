@@ -6,6 +6,10 @@ const eventListeners = () => {
   $crearProyecto.addEventListener('click', nuevoProyecto) // añadimos el botón que nos creará el proyecto, bookmark o tarjeta
   // agregar tarea
   $nuevaTarea.addEventListener('click', addingTask)
+  // btn checked and trash
+  document
+    .querySelector('.listado-pendientes')
+    .addEventListener('click', actionTask)
 }
 
 const quitaAgregarNuevoProyecto = () =>
@@ -127,15 +131,15 @@ function addingTask(e) {
     })
       .then(res => res.json())
       .then(data => {
-        const {response, id_inserted, type_action, tarea } = data
+        const { response, id_inserted, type_action, tarea } = data
         // console.log( `${response}, ${id_inserted}, ${type_action}, ${tarea}`)
-        if (response == 'right'){
-          if(type_action == 'crear'){
+        if (response == 'right') {
+          if (type_action == 'crear') {
             alert('alerta creada')
             // crear el html de tareas
             const newTask = document.createElement('li')
 
-            newTask.id = 'tarea:'+ id_inserted
+            newTask.id = 'tarea_' + id_inserted
             newTask.classList.add('tarea')
 
             newTask.innerHTML = `
@@ -150,12 +154,50 @@ function addingTask(e) {
 
             // resteando la formulario o input
             document.querySelector('.agregar-tarea').reset()
-
           }
         } else alert('otro error!')
       })
       .catch(e => console.log('error !! ', e))
   }
+}
+
+// it changes tasks' state or deletes them
+// delegation method on addEventListener
+function actionTask(e) {
+  e.preventDefault()
+  // console.log(e.target);
+  if (e.target.classList.contains('fa-check-circle')) {
+    if (e.target.classList.contains('checked')) {
+      e.target.classList.remove('checked')
+      changeTaskstatus(e.target, 0)
+    } else {
+      e.target.classList.add('checked')
+      changeTaskstatus(e.target, 1)
+    }
+  }
+  if (e.target.classList.contains('fa-trash')) {
+    console.log('clicked on trash')
+  }
+}
+
+function changeTaskstatus(task, state){
+ const idTask = task.parentElement.parentElement.id.split('_')
+// console.log(idTask[1]);
+const url = 'inc/modelos/modelo-update-state.php'
+
+const formData = new FormData()
+formData.append('id', idTask[1])
+formData.append('type', 'update')
+formData.append('state', state)
+
+fetch(url, {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(e => console.log('hubo un error en el fetch', e))
+
 }
 
 // function guardarProyectoDB(nombreProyecto) {
