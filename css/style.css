@@ -22,6 +22,7 @@ or as the background for inverted designs.
 :root {
   --light-shades: #f1d588;
   --light-accent: #247477;
+  --light-accent-test: #b3410d;
   --main-brand-color: #39b7bc;
   --dark-shades: #28424a;
 
@@ -164,11 +165,15 @@ body {
   color: var(--light-accent);
 }
 
-.campo a {
+.campo a, .alert{
   text-transform: uppercase;
   font-weight: 700;
   color: black;
 }
+.alert {
+  line-height: 1.5rem;
+}
+
 .campo a:hover {
   color: var(--light-accent);
 }

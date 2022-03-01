@@ -103,9 +103,15 @@ const validarRegistro = e => {
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-            footer: '<a href="">Why do I have this issue?</a>',
+            title: 'Oooh!',
+            text: 'Ese usuasrio no existe, deberías crearlo!',
+            footer: '<a class="alert" href="crear-cuenta.php">Crea una nueva cuenta,<br /> por si no lo has echo ya.</a>',
+            confirmButtonColor: '#39b7bc',
+            iconColor: '#b3410d',
+            background: '#f1d588',
+            color: '#247477',
+            confirmButtonText: 'Vale'
+
           })
         }
       })
