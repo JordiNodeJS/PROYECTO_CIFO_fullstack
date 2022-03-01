@@ -64,24 +64,25 @@ require_once 'inc/templates/barra.php';
             // Fetching currents takses FROM proyecto
             $tareas = obtenerTareaProyecto($id_proyecto);
             // echo "<pre>";
-            //     var_dump($tareas->num_rows);
-            // echo "</pre>";
+            //     var_dump($tareas);
+            echo "</pre>";
+            if ($tareas !== false){
+                if ($tareas->num_rows > 0) {
+                    // si hay tareas
+                    foreach ($tareas as $tarea) : ?>
+                        <li id="tarea_<?= $tarea['id']; ?>" class="tarea">
+                            <p><?= $tarea['nombre']; ?></p>
+                            <div class="acciones">
+                                <i class="far fa-check-circle <?= ($tarea['estado'] == 1)? 'checked': ''; ?>"></i>
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </li>
 
-            if ($tareas->num_rows > 0) {
-                // si hay tareas
-                foreach ($tareas as $tarea) : ?>
-                    <li id="tarea_<?= $tarea['id']; ?>" class="tarea">
-                        <p><?= $tarea['nombre']; ?></p>
-                        <div class="acciones">
-                            <i class="far fa-check-circle <?= ($tarea['estado'] == 1)? 'checked': ''; ?>"></i>
-                            <i class="fas fa-trash"></i>
-                        </div>
-                    </li>
-
-            <?php endforeach;
-            } else {
-                // no hay tareas
-                echo "<p>No hay tareas</p>";
+                <?php endforeach;
+                } else {
+                    // no hay tareas
+                    echo "<p>No hay tareas</p>";
+                }
             }
             ?>
 
