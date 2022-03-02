@@ -73,7 +73,7 @@ require_once 'inc/templates/barra.php';
                         <li id="tarea_<?= $tarea['id']; ?>" class="tarea">
                             <p><?= $tarea['nombre']; ?></p>
                             <div class="acciones">
-                                <i class="far fa-check-circle <?= ($tarea['estado'] == 1)? 'checked': ''; ?>"></i>
+                                <i class="fas fa-check-circle <?= ($tarea['estado'] == 1)? 'checked': ''; ?>"></i>
                                 <i class="fas fa-trash"></i>
                             </div>
                         </li>

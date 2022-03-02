@@ -27,6 +27,7 @@
 // }
 
 $conn = new mysqli('localhost', 'root', '', 'bookmarks');
+// $conn = new mysqli('fdb32.awardspace.net', '4055208_database', 'aQa43Dg_gyu-d24Agqas', '4055208_database');
 
 if($conn->connect_error) echo "Hay un error en la conexión a la base de datos: " . $conn->connect_error ;
 

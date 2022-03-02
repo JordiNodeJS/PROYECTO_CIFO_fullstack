@@ -5,7 +5,8 @@ const $nuevaTarea = document.querySelector('.nueva-tarea')
 const eventListeners = () => {
   $crearProyecto.addEventListener('click', nuevoProyecto) // añadimos el botón que nos creará el proyecto, bookmark o tarjeta
   // agregar tarea
-  $nuevaTarea.addEventListener('click', addingTask)
+  if ($nuevaTarea !== null)
+     $nuevaTarea.addEventListener('click', addingTask)
   // btn checked and trash
   document
     .querySelector('.listado-pendientes')
@@ -145,7 +146,7 @@ function addingTask(e) {
             newTask.innerHTML = `
               <p>${tarea}</p>
               <div class="acciones">
-                <i class="fas fa-check"></i>
+                <i class="fas fa-check-circle"></i>
                 <i class="fas fa-trash"></i>
               </div>
             `
@@ -176,19 +177,34 @@ function actionTask(e) {
     }
   }
   if (e.target.classList.contains('fa-trash')) {
-    if (confirm('estás a punto de borrarlo')) {
+    // if (confirm('estás a punto de borrarlo')) {
       const deleteTask = e.target.parentElement.parentElement
       deleteTask.remove()
       deleteTaskDB(deleteTask)
 
       // TO DO :  borrar de la base de datos
       // TO DO borrar del html la tearea.
-    }
+    // }
   }
 }
-// STEP: 34: eliminando las tareas de la base de datos, tro lo ló
+// step 34: eliminando las tareas de la base de datos, tro lo ló
 function deleteTaskDB(task){
-  console.log(task);
+  const idTask = task.id.split('_')
+  // console.log(idTask[1]);
+  const url = 'inc/modelos/modelo-delete.php'
+
+  const formData = new FormData()
+  formData.append('id', idTask[1])
+  formData.append('type', 'delete')
+
+
+  fetch(url, {
+    method: 'POST',
+    body: formData,
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(e => console.log('hubo un error en el fetch', e))
 
 }
 
