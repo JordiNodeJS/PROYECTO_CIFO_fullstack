@@ -8,6 +8,9 @@
             <ul id="proyectos">
             <?php
                 $proyectos = obtenerProyectos();
+                echo "<pre>";
+                print_r($proyectos);
+                echo "</pre>";
                 if ($proyectos) {
                     foreach($proyectos as $proyecto){ ?>
                                  <li>

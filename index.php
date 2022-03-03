@@ -7,6 +7,7 @@ require_once 'inc/templates/barra.php';
 // Obtener el ID de la URL
 (isset($_GET['id_proyecto'])) ? $id_proyecto = $_GET['id_proyecto'] : $id_proyecto = null;
 
+
 ?>
 
 
@@ -14,6 +15,7 @@ require_once 'inc/templates/barra.php';
 <div class="contenedor">
     <?php
     require_once 'inc/templates/sidebar.php';
+
     ?>
 
     <main class="contenido-principal">
@@ -22,15 +24,23 @@ require_once 'inc/templates/barra.php';
             // echo "<pre>";
             // var_dump( obtenerNombreProyecto($id_proyecto) );
             // echo "</pre>";
-            //   echo "<span>". obtenerNombreProyecto($id_proyecto) . "</span>"  ;
+            // echo "<span>". obtenerNombreProyecto($id_proyecto) . "</span>"  ;
+            // die("debugging");
+
+
+
             $proyecto = obtenerNombreProyecto($id_proyecto);
-
-
+            // echo "<pre>";
+            // print_r( $proyecto );
+            // echo "</pre>";
             if ($proyecto) : ?>
                 <?php foreach ($proyecto as $item) : ?>
                     <span><?= $item['nombre']; ?></span>
 
-                <?php endforeach; ?>
+                    <?php endforeach;
+
+
+                ?>
 
 
         </h1>
@@ -51,7 +61,6 @@ require_once 'inc/templates/barra.php';
                 echo "Selecciona un proyecto";
             endif;
 
-
     ?>
 
 
@@ -62,11 +71,14 @@ require_once 'inc/templates/barra.php';
             <?php
             // Fetching currents takses FROM proyecto
             $tareas = obtenerTareaProyecto($id_proyecto);
-            // echo "<pre>";
-            //     var_dump($tareas);
-            // echo "</pre>";
+            echo "<pre>";
+            var_dump($tareas);
+            echo "longitud del array: ".count($tareas);
+            echo "</pre>";
+
             if ($tareas !== false){
-                if ($tareas->num_rows > 0) {
+                // if ($tareas->num_rows > 0) {
+                if ( count($tareas) > 0) {
                     // si hay tareas
                     foreach ($tareas as $tarea) : ?>
                         <li id="tarea_<?= $tarea['id']; ?>" class="tarea">
@@ -83,6 +95,7 @@ require_once 'inc/templates/barra.php';
                     echo "<p>No hay tareas</p>";
                 }
             }
+            // die("::::::debugging::::::");
             ?>
 
 

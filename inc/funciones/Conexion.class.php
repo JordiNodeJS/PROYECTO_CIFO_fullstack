@@ -13,7 +13,7 @@ class Conexion extends PDO
 {
     private $typedb = "mysql";
     private $host = "localhost";
-    private $dbname = "bookmark";
+    private $dbname = "bookmarks";
     private $user = "root";
     private $pw = "";
 
