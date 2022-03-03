@@ -26,8 +26,9 @@
 //     }
 // }
 
-$conn = new mysqli('localhost', 'root', '', 'bookmarks');
+// $conn = new mysqli('localhost', 'root', '', 'bookmarks');
 // $conn = new mysqli('fdb32.awardspace.net', '4055208_database', 'aQa43Dg_gyu-d24Agqas', '4055208_database');
+$conn = new mysqli('sql108.epizy.com', 'epiz_28011271', 'K79bSYFYk071VQ', 'epiz_28011271_cifo');
 
 if($conn->connect_error) echo "Hay un error en la conexión a la base de datos: " . $conn->connect_error ;
 
