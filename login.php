@@ -9,13 +9,13 @@ require_once 'inc/templates/header.php';
 if (isset($_GET['cerrar_sesion'])) {
     $_SESSION = [];
     session_destroy();
-} else echo "no";
+}
 
 
-echo "<pre>";
-print_r($_SESSION);
+// echo "<pre>";
+// print_r($_SESSION);
 // print_r($_GET);
-echo "</pre>";
+// echo "</pre>";
 ?>
 
 <div class="contenedor-formulario">

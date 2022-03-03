@@ -15,8 +15,8 @@
     <?php
     $actual = obtener_estilo_pagina_actual();
     if ($actual === "crear-cuenta" || $actual === "login")
-        echo '<script defer type="module" src="js/formulario.js"></script>';
-        else echo '<script defer type="module" src="js/scripts.js"></script>';
+        echo '<script defer type="module" src="js/form.js"></script>';
+        else echo '<script defer type="module" src="js/crud.js"></script>';
     ?>
 
 </head>

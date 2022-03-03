@@ -22,3 +22,20 @@ CREATE TABLE tareas (
     id_proyecto INT(11),
     FOREIGN KEY (id_proyecto) REFERENCES proyectos(id)
 ) ENGINE = InnoDB;
+
+INSERT INTO proyectos (id, nombre) VALUES (1, 'Publicación de una página web');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Añadir el logotipo');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Implementar las secciones');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Desarrollo del contenido');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Desarrollo del contenido');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Elección de la paleta de colores');
+
+INSERT INTO proyectos (id, nombre) VALUES (2, 'Creación del logotipo');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (2, 'Diseño del logotipo');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (2, 'Elección de la paleta de colores');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (2, 'Creación de una guía de estilos');
+
+INSERT INTO proyectos (id, nombre) VALUES (3, 'Reparar las ventanas');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (3, 'Presupuesto');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (3, 'Buscar un carpintero local');
+    INSERT INTO tareas (id_proyecto, nombre) VALUES (3, 'Ferretería');

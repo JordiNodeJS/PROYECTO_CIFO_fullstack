@@ -51,13 +51,13 @@ function nuevoProyecto(e) {
 
 function guardarProyectoDB(nombreProyecto) {
   console.log(nombreProyecto)
-  const url = 'inc/modelos/moledo-proyecto.php'
+  const URL = 'inc/modelos/moledo-proyecto.php'
 
   const formData = new FormData()
   formData.append('proyecto', nombreProyecto)
   formData.append('accion', 'crear')
 
-  fetch(url, {
+  fetch(URL, {
     method: 'POST',
     body: formData,
   })
@@ -120,13 +120,13 @@ function addingTask(e) {
     alert('Rellena el bookmark algo. Un bookmark no puede ir vacío.')
   } else {
     // insert into tareas
-    const url = 'inc/modelos/molelo-tareas.php'
+    const URL = 'inc/modelos/molelo-tareas.php'
     const formData = new FormData()
     formData.append('tarea', $nombreTarea)
     formData.append('type_action', 'crear')
     formData.append('id_proyecto', document.querySelector('#id_proyecto').value)
 
-    fetch(url, {
+    fetch(URL, {
       method: 'POST',
       body: formData,
     })
@@ -182,8 +182,6 @@ function actionTask(e) {
       deleteTask.remove()
       deleteTaskDB(deleteTask)
 
-      // TO DO :  borrar de la base de datos
-      // TO DO borrar del html la tearea.
     // }
   }
 }
@@ -191,14 +189,14 @@ function actionTask(e) {
 function deleteTaskDB(task){
   const idTask = task.id.split('_')
   // console.log(idTask[1]);
-  const url = 'inc/modelos/modelo-delete.php'
+  const URL = 'inc/modelos/modelo-delete.php'
 
   const formData = new FormData()
   formData.append('id', idTask[1])
   formData.append('type', 'delete')
 
 
-  fetch(url, {
+  fetch(URL, {
     method: 'POST',
     body: formData,
   })
@@ -213,14 +211,14 @@ function deleteTaskDB(task){
 function changeTaskstatus(task, state) {
   const idTask = task.parentElement.parentElement.id.split('_')
   // console.log(idTask[1]);
-  const url = 'inc/modelos/modelo-update-state.php'
+  const URL = 'inc/modelos/modelo-update-state.php'
 
   const formData = new FormData()
   formData.append('id', idTask[1])
   formData.append('type', 'update')
   formData.append('state', state)
 
-  fetch(url, {
+  fetch(URL, {
     method: 'POST',
     body: formData,
   })

@@ -5,7 +5,6 @@ require_once 'inc/templates/header.php';
 require_once 'inc/templates/barra.php';
 
 // Obtener el ID de la URL
-
 (isset($_GET['id_proyecto'])) ? $id_proyecto = $_GET['id_proyecto'] : $id_proyecto = null;
 
 ?>
@@ -65,7 +64,7 @@ require_once 'inc/templates/barra.php';
             $tareas = obtenerTareaProyecto($id_proyecto);
             // echo "<pre>";
             //     var_dump($tareas);
-            echo "</pre>";
+            // echo "</pre>";
             if ($tareas !== false){
                 if ($tareas->num_rows > 0) {
                     // si hay tareas
