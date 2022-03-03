@@ -3,22 +3,27 @@
 $accion = $_POST['accion'];
 $proyecto = $_POST['proyecto'];
 
+
 if ($accion == 'crear') {
 
 
     // // // CREANDO LA CONEXION
-    include '../funciones/conexion.php';
+    include '../funciones/Conexion.class.php';
+    $pdo = new Conexion();
 
-    try {
         // la consulta de usuarios
-        $stmt = $conn->prepare("INSERT INTO proyectos(nombre) VALUES (?)");
-        $stmt->bind_param("s", $proyecto);
-        $stmt->execute();
 
-        if ($stmt->affected_rows > 0) {
+        $stmt = $pdo->prepare('INSERT INTO proyectos(nombre) VALUES (:proyecto)');
+        $stmt->execute([':proyecto', $proyecto]);
+
+        // $stmt = $conn->prepare("INSERT INTO proyectos(nombre) VALUES (?)");
+        // $stmt->bind_param("s", $proyecto);
+        // $stmt->execute();
+
+        if ($stmt->fetchColumn() > 0) {
             $respuesta = [
                 'response' => 'right',
-                'id_proyecto' => $stmt->insert_id,
+                'id_proyecto' => $pdo->lastInsertId(),
                 'type_action' => $accion,
                 'nombre_proyecto' => $proyecto
             ];
@@ -28,12 +33,9 @@ if ($accion == 'crear') {
             ];
         }
 
-        $stmt->close();
-        $conn->close();
 
-    } catch (Exception $e) {
-        // en caso de que la conexión falle la cazamos y la mostramos
-        $respuesta = ['Exception message: ' => $e->getMessage()];
-    }
+        $pdo = null;
+
+
     echo json_encode($respuesta);
 }
