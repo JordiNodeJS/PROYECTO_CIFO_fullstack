@@ -14,13 +14,13 @@ if ($accion == 'crear') {
         // la consulta de usuarios
 
         $stmt = $pdo->prepare('INSERT INTO proyectos(nombre) VALUES (:proyecto)');
-        $stmt->execute([':proyecto', $proyecto]);
+        $stmt->execute([':proyecto'=> $proyecto]);
 
         // $stmt = $conn->prepare("INSERT INTO proyectos(nombre) VALUES (?)");
         // $stmt->bind_param("s", $proyecto);
         // $stmt->execute();
 
-        if ($stmt->fetchColumn() > 0) {
+        if ($stmt->rowCount() > 0) {
             $respuesta = [
                 'response' => 'right',
                 'id_proyecto' => $pdo->lastInsertId(),
