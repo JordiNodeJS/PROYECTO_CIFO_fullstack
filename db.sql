@@ -1,7 +1,7 @@
 
-DROP DATABASE IF EXISTS bookmarks;
-CREATE DATABASE IF NOT EXISTS bookmarks DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-USE bookmarks;
+-- DROP DATABASE IF EXISTS bookmarks;
+-- CREATE DATABASE IF NOT EXISTS bookmarks DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- USE bookmarks;
 
 CREATE TABLE usuarios (
 	id INT(11) AUTO_INCREMENT PRIMARY KEY,
