@@ -72,7 +72,7 @@ require_once 'inc/templates/barra.php';
             // Fetching currents takses FROM proyecto
             $tareas = obtenerTareasProyecto($id_proyecto);
             echo "<pre>";
-            var_dump($tareas);
+            print_r($tareas);
             echo "longitud del array: ".count($tareas);
             echo "</pre>";
 

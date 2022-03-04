@@ -66,10 +66,10 @@ function guardarProyectoDB(nombreProyecto) {
       if (data.ok == true) return data.json()
     })
     .then(respuesta => {
-      let proyecto = respuesta.nombre_proyecto,
-        idProyecto = respuesta.id_proyecto,
-        typeAction = respuesta.type_action,
-        resultado = respuesta.response
+        let proyecto   = respuesta.nombre_proyecto,
+            idProyecto = respuesta.id_proyecto,
+            typeAction = respuesta.type_action,
+            resultado  = respuesta.response
       if (resultado == 'right') {
         // fue exitoso
         if (typeAction == 'crear') {
