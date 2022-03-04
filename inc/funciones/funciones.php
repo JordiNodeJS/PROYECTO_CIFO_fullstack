@@ -35,7 +35,7 @@ function obtenerNombreProyecto($id = null){
 
 }
 
-function obtenerTareaProyecto($id = null){
+function obtenerTareasProyecto($id = null){
     $pdo = new Conexion();
     $stmt = $pdo->prepare('SELECT id, nombre, estado FROM tareas WHERE id_proyecto= :id');
     $stmt->execute([
