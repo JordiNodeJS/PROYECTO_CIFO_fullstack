@@ -132,6 +132,7 @@ function addingTask(e) {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         const { response, id_inserted, type_action, tarea } = data
         // console.log( `${response}, ${id_inserted}, ${type_action}, ${tarea}`)
         if (response == 'right') {

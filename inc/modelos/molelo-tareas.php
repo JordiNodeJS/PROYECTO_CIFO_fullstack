@@ -10,34 +10,61 @@ $id_proyecto = (int) $_POST['id_proyecto'];
 
 if ($accion == 'crear') {
 
-    // // // CREANDO LA CONEXION
-    include '../funciones/conexion.php';
+    include '../funciones/Conexion.class.php';
+    $pdo = new Conexion();
+    $stmt = $pdo->prepare("INSERT  INTO tareas(nombre, id_proyecto) VALUES (:tarea, :id_proyecto)");
 
-    try {
-        // la consulta de usuarios
-        $stmt = $conn->prepare("INSERT INTO tareas(nombre, id_proyecto) VALUES (?, ?)");
-        $stmt->bind_param("si", $tarea, $id_proyecto);
-        $stmt->execute();
+    $stmt->execute([
+        ":tarea" => $tarea,
+        ":id_proyecto" => $id_proyecto
+    ]);
 
-        if ($stmt->affected_rows > 0) {
-            $respuesta = [
-                'response' => 'right',
-                'id_inserted' => $stmt->insert_id,
-                'type_action' => $accion,
-                'tarea' => $tarea
-            ];
-        } else {
-            $respuesta = [
-                'respuesta' => 'ERROR!!'
-            ];
-        }
+    if ($stmt->rowCount()){
+                $respuesta = [
+                    'response' => 'right',
+                    'id_inserted' => $stmt->rowCount(),
+                    'type_action' => $accion,
+                    'tarea' => $tarea
+                ];
 
-        $stmt->close();
-        $conn->close();
-
-    } catch (Exception $e) {
-        // en caso de que la conexión falle la cazamos y la mostramos
-        $respuesta = ['Exception message: ' => $e->getMessage()];
+     } else {
+                $respuesta = [
+                    'respuesta' => 'ERROR!!'
+                ];
     }
+
+    $pdo = null;
+
+
+
+    // // // CREANDO LA CONEXION
+    // include '../funciones/conexion.php';
+
+    // try {
+    //     // la consulta de usuarios
+    //     $stmt = $conn->prepare("INSERT INTO tareas(nombre, id_proyecto) VALUES (?, ?)");
+    //     $stmt->bind_param("si", $tarea, $id_proyecto);
+    //     $stmt->execute();
+
+    //     if ($stmt->affected_rows > 0) {
+    //         $respuesta = [
+    //             'response' => 'right',
+    //             'id_inserted' => $stmt->insert_id,
+    //             'type_action' => $accion,
+    //             'tarea' => $tarea
+    //         ];
+    //     } else {
+    //         $respuesta = [
+    //             'respuesta' => 'ERROR!!'
+    //         ];
+    //     }
+
+    //     $stmt->close();
+    //     $conn->close();
+
+    // } catch (Exception $e) {
+    //     // en caso de que la conexión falle la cazamos y la mostramos
+    //     $respuesta = ['Exception message: ' => $e->getMessage()];
+    // }
     echo json_encode($respuesta);
 }
