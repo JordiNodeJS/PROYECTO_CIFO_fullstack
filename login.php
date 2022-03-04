@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'inc/funciones/funciones.php';
+require_once 'inc/funciones/CRUD.class.php';
 require_once 'inc/templates/header.php';
 // echo "<pre>";
 // print_r($_SESSION);

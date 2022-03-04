@@ -1,6 +1,6 @@
 <?php
 require_once 'inc/funciones/sesiones.php';
-require_once 'inc/funciones/funciones.php';
+require_once 'inc/funciones/CRUD.class.php';
 require_once 'inc/templates/header.php';
 require_once 'inc/templates/barra.php';
 
@@ -29,7 +29,7 @@ require_once 'inc/templates/barra.php';
 
 
 
-            $proyecto = obtenerNombreProyecto($id_proyecto);
+            $proyecto = CRUD::obtenerNombreProyecto($id_proyecto);
             // echo "<pre>";
             // print_r( $proyecto );
             // echo "</pre>";
@@ -70,7 +70,7 @@ require_once 'inc/templates/barra.php';
         <ul>
             <?php
             // Fetching currents takses FROM proyecto
-            $tareas = obtenerTareasProyecto($id_proyecto);
+            $tareas = CRUD::obtenerTareasProyecto($id_proyecto);
             echo "<pre>";
             print_r($tareas);
             echo "longitud del array: ".count($tareas);

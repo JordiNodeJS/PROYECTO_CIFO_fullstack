@@ -7,7 +7,7 @@
             <h2>Bookmarks</h2>
             <ul id="proyectos">
             <?php
-                $proyectos = obtenerProyectos();
+                $proyectos = CRUD::obtenerProyectos();
                 echo "<pre>";
                 print_r($proyectos);
                 echo "</pre>";

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php $actual = obtener_estilo_pagina_actual(); ?>
+<?php $actual = CRUD::obtener_estilo_pagina_actual(); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <script defer src="js/sweetalert2.all.min.js"></script>
     <?php
-    $actual = obtener_estilo_pagina_actual();
+    $actual = CRUD::obtener_estilo_pagina_actual();
     if ($actual === "crear-cuenta" || $actual === "login")
         echo '<script defer type="module" src="js/form.js"></script>';
         else echo '<script defer type="module" src="js/crud.js"></script>';
@@ -21,4 +21,4 @@
 
 </head>
 
-<body class="<?= obtener_estilo_pagina_actual(); ?>">
+<body class="<?= CRUD::obtener_estilo_pagina_actual(); ?>">
