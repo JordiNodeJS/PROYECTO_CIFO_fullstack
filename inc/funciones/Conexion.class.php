@@ -42,7 +42,7 @@ class Conexion extends PDO
             );
 
         } catch (PDOException $e) {
-            echo "Error de conexión" .  $e->getMessage();
+            echo "ERROR DE conexión -->" .  $e->getMessage();
             exit;
         }
     }
