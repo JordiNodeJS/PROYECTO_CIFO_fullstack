@@ -11,7 +11,6 @@ CREATE TABLE usuarios (
     UNIQUE (usuario, password)
 ) ENGINE = InnoDB;
 
-INSERT INTO usuarios (usuario, password) VALUES ('admin', 'admin');
 
 CREATE TABLE proyectos (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,

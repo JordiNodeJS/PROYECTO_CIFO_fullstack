@@ -71,10 +71,10 @@ require_once 'inc/templates/barra.php';
             <?php
             // Fetching currents takses FROM proyecto
             $tareas = CRUD::obtenerTareasProyecto($id_proyecto);
-            echo "<pre>";
-            print_r($tareas);
-            echo "longitud del array: ".count($tareas);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($tareas);
+            // echo "longitud del array: ".count($tareas);
+            // echo "</pre>";
 
             if ($tareas !== false){
                 // if ($tareas->num_rows > 0) {
@@ -92,7 +92,7 @@ require_once 'inc/templates/barra.php';
                 <?php endforeach;
                 } else {
                     // no hay tareas
-                    echo "<p>No hay tareas</p>";
+                    echo '<p id="warning">No hay tareas</p>';
                 }
             }
             // die("::::::debugging::::::");

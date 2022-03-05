@@ -138,6 +138,10 @@ function addingTask(e) {
         if (response == 'right') {
           if (type_action == 'crear') {
             alert('alerta creada')
+
+            if(document.querySelector('#warning') != null )
+             document.querySelector('#warning').remove()
+
             // crear el html de tareas
             const newTask = document.createElement('li')
 
@@ -226,6 +230,8 @@ function projectTrash(e){
         .then(res => res.json())
         .then(data => {
           e.target.parentElement.remove()
+          document.querySelector('.contenido-principal').remove()
+          window.location.href = 'index.php'
           console.log(data)
         })
         .catch(e => console.log('hubo un error en el fetch', e))

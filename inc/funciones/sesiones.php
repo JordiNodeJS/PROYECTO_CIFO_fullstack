@@ -5,18 +5,16 @@
 // que únicamente los que sean logueado correctamente
 // con un usuario y un password válido puedan ver el
 // contenido
-function usuario_autenticado() {
-    if (!revisar_usuario()){
-        header('Location:login.php');
-        exit();
-    }
-}
-function revisar_usuario() {
-    return isset($_SESSION['nombre']);
-}
+// function usuario_autenticado() {
+//     if (!isset($_SESSION['nombre'])){
+//         header('Location:login.php');
+//         exit();
+//     }
+// }
 
 session_start();
 
-usuario_autenticado();
-
-?>
+if (!isset($_SESSION['nombre'])){
+    header('Location:login.php');
+    exit();
+}

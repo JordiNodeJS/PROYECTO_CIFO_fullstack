@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <script defer src="js/sweetalert2.all.min.js"></script>
     <?php
-    $actual = CRUD::obtener_estilo_pagina_actual();
+
     if ($actual === "crear-cuenta" || $actual === "login")
         echo '<script defer type="module" src="js/form.js"></script>';
         else echo '<script defer type="module" src="js/crud.js"></script>';
@@ -21,4 +21,4 @@
 
 </head>
 
-<body class="<?= CRUD::obtener_estilo_pagina_actual(); ?>">
+<body class="<?= $actual; ?>">

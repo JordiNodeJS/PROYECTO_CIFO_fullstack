@@ -290,7 +290,7 @@ body {
 
 /** Listado Pendientes **/
 .listado-pendientes {
-  background-color: #f2f2f2;
+  background-color: var(--main-brand-color);
   max-width: 800px;
   width: 90%;
   margin: 2rem auto 0 auto;
@@ -318,7 +318,7 @@ body {
   margin-left: 3rem;
 }
 .checked {
-  color: #00b762;
+  color: var(--light-accent);
 }
 .alerta {
   background-color: red;

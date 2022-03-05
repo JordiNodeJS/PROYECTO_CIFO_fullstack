@@ -1,7 +1,7 @@
 const validarRegistro = e => {
   e.preventDefault()
 
-  const url = 'inc/modelos/modelo-admin.php'
+  const URL = 'inc/modelos/modelo-admin.php'
 
   let usuario = document.querySelector('#usuario').value,
     password = document.querySelector('#password').value,
@@ -18,7 +18,7 @@ const validarRegistro = e => {
       background: 'lightblue',
       iconColor: 'peru',
       confirmButtonColor: 'purple',
-      confirmButtonText: 'Vale tío?',
+      confirmButtonText: 'Va!, loguea en serio!',
     })
   } else {
     // -------------------------------- START
@@ -34,7 +34,7 @@ const validarRegistro = e => {
     // console.log(typeof datos)
 
     // const xhr = new XMLHttpRequest()
-    // xhr.open('POST', url, true)
+    // xhr.open('POST', URL, true)
 
     // xhr.onload = function () {
     //   if (this.status === 200)
@@ -57,7 +57,7 @@ const validarRegistro = e => {
     // // datos que envío al server PHP, el cual estará esperándolos como agua de mayo.
 
     const formData = new FormData(document.querySelector('#formulario'))
-    // FormData recoge los valors del siempre y cuando no sean valores ocultos
+    // FormData recoge los valors de siempre y cuando no sean valores ocultos
 
     // con este método, en caso de que el campo sea un valor oculto, se añade ese campo con este método
     formData.append('accion', tipo)
@@ -67,7 +67,7 @@ const validarRegistro = e => {
     // console.log(formData.get('password'));
     // console.log(formData.get('accion'));
 
-    fetch(url, {
+    fetch(URL, {
       method: 'POST',
       body: formData,
     })
@@ -88,6 +88,7 @@ const validarRegistro = e => {
               timerProgressBar: true,
             })
           } else if (data.type_action == 'login'){
+
             Swal.fire({
               position: 'center',
               icon: 'success',
