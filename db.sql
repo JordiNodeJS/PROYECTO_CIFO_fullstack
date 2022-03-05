@@ -3,6 +3,9 @@ DROP DATABASE IF EXISTS bookmarks;
 CREATE DATABASE IF NOT EXISTS bookmarks DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 USE bookmarks;
 
+-- ALTER DATABASE 4055208_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+
 CREATE TABLE usuarios (
 	id INT(11) AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL,
@@ -24,6 +27,9 @@ CREATE TABLE tareas (
     id_proyecto INT(11),
     FOREIGN KEY (id_proyecto) REFERENCES proyectos(id)
 ) ENGINE = InnoDB;
+
+
+
 
 INSERT INTO proyectos (id, nombre) VALUES (1, 'Publicación de una página web');
     INSERT INTO tareas (id_proyecto, nombre) VALUES (1, 'Añadir el logotipo');
