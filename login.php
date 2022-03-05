@@ -3,10 +3,10 @@ session_start();
 require_once 'inc/funciones/CRUD.class.php';
 require_once 'inc/templates/header.php';
 
-echo "<pre>";
-print_r($_SESSION);
-// print_r($_GET);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION);
+// // print_r($_GET);
+// echo "</pre>";
 
 if (isset($_GET['cerrar_sesion'])) {
     $_SESSION = [];

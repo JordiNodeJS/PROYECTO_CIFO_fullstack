@@ -82,9 +82,13 @@ const validarRegistro = e => {
               position: 'center',
               icon: 'success',
               title: 'Usuario creado',
-              text: 'El usuario se creó corréctamente',
+              text: 'El usuario se creó sin ningún problema. Ve a logearte tranquilamente que ya estás dado de alta y además gratis',
               showConfirmButton: false,
-              timer: 2500,
+
+              iconColor: '#39b7bc',
+              background: '#f1d588',
+              color: '#247477',
+              timer: 1500,
               timerProgressBar: true,
             })
           } else if (data.type_action == 'login'){
@@ -94,7 +98,12 @@ const validarRegistro = e => {
               icon: 'success',
               title: 'Login',
               text: 'Logeado corréctamente!',
-              showConfirmButton: true
+              showConfirmButton: true,
+              confirmButtonColor: '#39b7bc',
+              iconColor: '#247477',
+              background: '#f1d588',
+              color: '#247477',
+              confirmButtonText: 'Okay Mckay'
             })
             .then(resultado => {
               if(resultado.value == true)

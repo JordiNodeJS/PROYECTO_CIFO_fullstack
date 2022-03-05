@@ -81,20 +81,28 @@ function guardarProyectoDB(nombreProyecto) {
           // se acaba de crear un nuevo proyecto
           // meto  html
           const nuevoProyecto = document.createElement('li')
+          nuevoProyecto.classList.add('flex')
+          nuevoProyecto.classList.add('red')
           nuevoProyecto.innerHTML = `
                     <a href="index.php?id_proyecto=${idProyecto}" id="${idProyecto}">
                         ${proyecto}
                     </a>
+                    <i id="proyectoId_${idProyecto}" class="fas fa-trash"></i>
                 `
           // adding to html
           $listaProyectos.appendChild(nuevoProyecto)
 
           Swal.fire({
-            position: 'center',
+            position: 'bottom-start',
             icon: 'success',
             title: 'Proyecto',
             text: 'Proyecto creado corréctamente!',
-            showConfirmButton: true,
+            confirmButtonColor: '#39b7bc',
+            iconColor: '#39b7bc',
+            background: '#f1d588',
+            color: '#247477',
+            showConfirmButton: false,
+            timer: 1000
           }).then(resultado => {
             if (resultado.value)
               window.location.href = `index.php?id_proyecto=${idProyecto}`
@@ -201,16 +209,23 @@ function projectTrash(e){
       text: "Se borrará del todo y no volverás a saber nunca más de tu proyecto!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, quiero liberarme del proyecto'
+      confirmButtonColor: '#247477',
+      cancelButtonColor: '#b3410d',
+      iconColor: '#39b7bc',
+      background: '#f1d588',
+      confirmButtonText: 'Sí, quiero liberarme del proyecto',
+      cancelButtonText: 'Pues no: me lo he pensado mejor.'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Adios proyecto',
-          'Te has quedado sin él para siempre. Te lo dije.',
-          'success'
-        )
+        Swal.fire({
+          title: 'Adios proyecto',
+          text: 'Te has quedado sin él para siempre. Te lo dije.',
+          icon: 'success',
+          iconColor: '#39b7bc',
+          background: '#f1d588',
+          confirmButtonColor: '#247477',
+          showConfirmButton: false,
+        })
 
 
 
