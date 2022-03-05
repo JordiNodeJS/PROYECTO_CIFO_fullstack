@@ -8,9 +8,9 @@
             <ul id="proyectos">
             <?php
                 $proyectos = CRUD::obtenerProyectos();
-                echo "<pre>";
-                print_r($proyectos);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($proyectos);
+                // echo "</pre>";
                 if ($proyectos) {
                     foreach($proyectos as $proyecto){ ?>
                                  <li>

@@ -66,7 +66,7 @@ function guardarProyectoDB(nombreProyecto) {
       if (data.ok == true) return data.json()
     })
     .then(respuesta => {
-        let proyecto   = respuesta.nombre_proyecto,
+      const proyecto   = respuesta.nombre_proyecto,
             idProyecto = respuesta.id_proyecto,
             typeAction = respuesta.type_action,
             resultado  = respuesta.response
@@ -102,12 +102,7 @@ function guardarProyectoDB(nombreProyecto) {
         alert('hubo un error')
       }
     })
-    .catch(e => {
-      console.log(
-        'mensaje de error, caray, posiblemente no estés recibiendo un objeto json ',
-        e
-      )
-    })
+    .catch(e => console.log('Mensaje de error, caray! Posiblemente no estés recibiendo un objeto json😪', e) )
 }
 
 // adding task
@@ -117,7 +112,7 @@ function addingTask(e) {
   const $nombreTarea = document.querySelector('.nombre-tarea').value
 
   if ($nombreTarea === '') {
-    alert('Rellena el bookmark algo. Un bookmark no puede ir vacío.')
+    alert('Rellena el bookmark con algo. Un bookmark no puede ir vacío. Porque tú me dirás si no para qué lo creas.')
   } else {
     // insert into tareas
     const URL = 'inc/modelos/molelo-tareas.php'

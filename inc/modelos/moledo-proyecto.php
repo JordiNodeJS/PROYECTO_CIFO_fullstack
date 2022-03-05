@@ -1,24 +1,18 @@
 <?php
+// ( ( ( ( ))  ) );
 
 $accion = $_POST['accion'];
 $proyecto = $_POST['proyecto'];
 
-
 if ($accion == 'crear') {
 
-
-    // // // CREANDO LA CONEXION
+    //  CREANDO LA CONEXION
     include '../funciones/Conexion.class.php';
     $pdo = new Conexion();
 
-        // la consulta de usuarios
 
         $stmt = $pdo->prepare('INSERT INTO proyectos(nombre) VALUES (:proyecto)');
         $stmt->execute([':proyecto'=> $proyecto]);
-
-        // $stmt = $conn->prepare("INSERT INTO proyectos(nombre) VALUES (?)");
-        // $stmt->bind_param("s", $proyecto);
-        // $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
             $respuesta = [
