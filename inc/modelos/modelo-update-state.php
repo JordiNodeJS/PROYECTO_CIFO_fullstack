@@ -8,13 +8,13 @@ if ($type == 'update'){
 
     $pdo = new Conexion();
     $stmt = $pdo->prepare('UPDATE tareas SET estado = :state WHERE id = :id');
-    $stmt->execute([
+
+    (    $stmt->execute([
         ':state' => $state,
-        ':id' => $id
-    ]);
-    ($stmt->rowCount() > 0)?
+        ':id' => $id])
+    )?
     $respuesta = ['response' => 'right'] :
-    $respuesta = ['response' => 'ERROR!!'];
+    $respuesta = ['response' => 'ERROR A LA HORA DE ACTULAIZAR EL ESTADO DE LA TAREA'];
 
     $pdo = null;
 

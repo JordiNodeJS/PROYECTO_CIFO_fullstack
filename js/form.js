@@ -104,7 +104,7 @@ const validarRegistro = e => {
           Swal.fire({
             icon: 'error',
             title: 'Oooh!',
-            text: 'Ese usuasrio no existe, deberías crearlo!',
+            text: data.response,
             footer: '<a class="alert" href="crear-cuenta.php">Crea una nueva cuenta,<br /> por si no lo has echo ya.</a>',
             confirmButtonColor: '#39b7bc',
             iconColor: '#b3410d',
