@@ -13,10 +13,11 @@
                 // echo "</pre>";
                 if ($proyectos) {
                     foreach($proyectos as $proyecto){ ?>
-                                 <li>
+                        <li class="flex red">
                             <a href="index.php?id_proyecto=<?= $proyecto['id'] ?>" id="<?= $proyecto['id'] ?>">
                                 <?= $proyecto['nombre'] ?>
                             </a>
+                            <i id="proyectoId_<?= $proyecto['id'] ?>" class="fas fa-trash"></i>
                         </li>
 
         <?php  }

@@ -1,6 +1,7 @@
 const $listaProyectos = document.querySelector('ul#proyectos')
 const $crearProyecto = document.querySelector('.crear-proyecto a')
 const $nuevaTarea = document.querySelector('.nueva-tarea')
+const $projectTrash = document.querySelector('#proyectos')
 
 const eventListeners = () => {
   $crearProyecto.addEventListener('click', nuevoProyecto) // añadimos el botón que nos creará el proyecto, bookmark o tarjeta
@@ -11,6 +12,10 @@ const eventListeners = () => {
   document
     .querySelector('.listado-pendientes')
     .addEventListener('click', actionTask)
+
+  // proyecto to trash
+
+  $projectTrash.addEventListener('click', projectTrash)
 }
 
 const quitaAgregarNuevoProyecto = () =>
@@ -181,7 +186,61 @@ function actionTask(e) {
     // }
   }
 }
-// step 34: eliminando las tareas de la base de datos, tro lo ló
+// enviando el proyecto al garete
+// delegation method
+function projectTrash(e){
+  const URL = 'inc/modelos/modelo-proyecto-sayonara-baby.php'
+  if(e.target.classList.contains('fa-trash')){
+
+    Swal.fire({
+      title: 'Estás seguro?',
+      text: "Se borrará del todo y no volverás a saber nunca más de tu proyecto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, quiero liberarme del proyecto'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Adios proyecto',
+          'Te has quedado sin él para siempre. Te lo dije.',
+          'success'
+        )
+
+
+
+        e.target.parentElement.remove()
+
+        const projectId = e.target.id.split('_')
+        console.log(projectId[1])
+
+        const formData = new FormData()
+        formData.append('id', projectId[1])
+        formData.append('type', 'delete')
+
+        fetch(URL, {
+          method:'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          e.target.parentElement.remove()
+          console.log(data)
+        })
+        .catch(e => console.log('hubo un error en el fetch', e))
+
+
+      }
+    })
+
+
+
+}
+}
+
+
+// step 4: eliminando las tareas de la base de datos, tro lo ló
 function deleteTaskDB(task){
   const idTask = task.id.split('_')
   // console.log(idTask[1]);

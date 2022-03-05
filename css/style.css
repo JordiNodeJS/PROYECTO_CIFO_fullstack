@@ -68,7 +68,13 @@ body {
   min-height: 100%;
   background-color: var(--light-shades);
 }
-
+.flex {
+  display:flex;
+  justify-content: space-between;
+}
+.flex.red {
+  color: rgba(139, 0, 0, 0.664);
+}
 #nuevo-proyecto {
   margin-bottom: 7px;
 }
