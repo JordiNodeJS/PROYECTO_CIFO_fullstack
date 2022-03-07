@@ -146,6 +146,18 @@ function addingTask(e) {
         if (response == 'right') {
           if (type_action == 'crear') {
             alert('alerta creada')
+            // editing
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Tareas',
+              text: 'Ya tienes tu tarea añadida a la lista',
+              showConfirmButton: false,
+              iconColor: '#39b7bc',
+              background: '#f1d588',
+              timer: 900
+            })
+
 
             if(document.querySelector('#warning') != null )
              document.querySelector('#warning').remove()
