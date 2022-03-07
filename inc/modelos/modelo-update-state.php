@@ -14,7 +14,7 @@ if ($type == 'update'){
         ':id' => $id])
     )?
     $respuesta = ['response' => 'right'] :
-    $respuesta = ['response' => 'ERROR A LA HORA DE ACTULAIZAR EL ESTADO DE LA TAREA'];
+    $respuesta = ['response' => 'ERROR A LA HORA DE ACTUALIZAR EL ESTADO DE LA TAREA'];
 
     $pdo = null;
 

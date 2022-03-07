@@ -145,8 +145,8 @@ function addingTask(e) {
         // console.log( `${response}, ${id_inserted}, ${type_action}, ${tarea}`)
         if (response == 'right') {
           if (type_action == 'crear') {
-            alert('alerta creada')
-            // editing
+
+
             Swal.fire({
               position: 'top-end',
               icon: 'success',
