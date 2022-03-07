@@ -14,7 +14,6 @@ const eventListeners = () => {
     .addEventListener('click', actionTask)
 
   // proyecto to trash
-
   $projectTrash.addEventListener('click', projectTrash)
 }
 
@@ -27,7 +26,7 @@ function nuevoProyecto(e) {
   e.preventDefault()
   console.log('crear nueva tarjeta', Math.ceil(Math.random() * 100))
 
-  // creamos un nuevo input para la tarjetas
+  // input for cards
   const $nuevoProyecto = document.createElement('li')
   $nuevoProyecto.classList.add('campo')
   $nuevoProyecto.innerHTML =
@@ -78,8 +77,7 @@ function guardarProyectoDB(nombreProyecto) {
       if (resultado == 'right') {
         // fue exitoso
         if (typeAction == 'crear') {
-          // se acaba de crear un nuevo proyecto
-          // meto  html
+          // new project
           const nuevoProyecto = document.createElement('li')
           nuevoProyecto.classList.add('flex')
           nuevoProyecto.classList.add('red')
@@ -111,7 +109,7 @@ function guardarProyectoDB(nombreProyecto) {
           //se actualizó o se eliminó.
         }
       } else {
-        // hubo un error
+        // there was an error
         alert('hubo un error')
       }
     })
@@ -146,7 +144,6 @@ function addingTask(e) {
         if (response == 'right') {
           if (type_action == 'crear') {
 
-
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -158,11 +155,10 @@ function addingTask(e) {
               timer: 900
             })
 
-
             if(document.querySelector('#warning') != null )
              document.querySelector('#warning').remove()
 
-            // crear el html de tareas
+            // creating tasks' html
             const newTask = document.createElement('li')
 
             newTask.id = 'tarea_' + id_inserted
@@ -178,7 +174,7 @@ function addingTask(e) {
             const listado = document.querySelector('.listado-pendientes ul')
             listado.appendChild(newTask)
 
-            // resteando la formulario o input
+            // reset task
             document.querySelector('.agregar-tarea').reset()
           }
         } else alert('otro error!')
@@ -206,14 +202,16 @@ function actionTask(e) {
       const deleteTask = e.target.parentElement.parentElement
       deleteTask.remove()
       deleteTaskDB(deleteTask)
-
     // }
   }
 }
+
+
 // enviando el proyecto al garete
 // delegation method
 function projectTrash(e){
   const URL = 'inc/modelos/modelo-proyecto-sayonara-baby.php'
+
   if(e.target.classList.contains('fa-trash')){
 
     Swal.fire({
@@ -239,8 +237,6 @@ function projectTrash(e){
           showConfirmButton: false,
         })
 
-
-
         e.target.parentElement.remove()
 
         const projectId = e.target.id.split('_')
@@ -262,7 +258,6 @@ function projectTrash(e){
           console.log(data)
         })
         .catch(e => console.log('hubo un error en el fetch', e))
-
 
       }
     })
