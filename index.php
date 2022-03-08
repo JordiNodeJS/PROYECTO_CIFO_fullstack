@@ -69,7 +69,7 @@ require_once 'inc/templates/barra.php';
     <div class="listado-pendientes">
         <ul>
             <?php
-            // Fetching currents takses FROM proyecto
+            // Fetching currents tasks FROM proyecto
             $tareas = CRUD::obtenerTareasProyecto($id_proyecto);
             // echo "<pre>";
             // print_r($tareas);

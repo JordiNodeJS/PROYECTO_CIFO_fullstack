@@ -18,10 +18,13 @@ if ($accion == 'crear') {
         ":tarea" => $tarea,
         ":id_proyecto" => $id_proyecto
     ]);
-
+    // $number_of_rows = $stmt->fetchColumn();
+    // echo $stmt->fetchColumn();
     if ($stmt->rowCount()){
+    // if ($number_of_rows){
                 $respuesta = [
                     'response' => 'right',
+                    // 'id_inserted' => $number_of_rows,
                     'id_inserted' => $stmt->rowCount(),
                     'type_action' => $accion,
                     'tarea' => $tarea
@@ -35,36 +38,5 @@ if ($accion == 'crear') {
 
     $pdo = null;
 
-
-
-    // // // CREANDO LA CONEXION
-    // include '../funciones/conexion.php';
-
-    // try {
-    //     // la consulta de usuarios
-    //     $stmt = $conn->prepare("INSERT INTO tareas(nombre, id_proyecto) VALUES (?, ?)");
-    //     $stmt->bind_param("si", $tarea, $id_proyecto);
-    //     $stmt->execute();
-
-    //     if ($stmt->affected_rows > 0) {
-    //         $respuesta = [
-    //             'response' => 'right',
-    //             'id_inserted' => $stmt->insert_id,
-    //             'type_action' => $accion,
-    //             'tarea' => $tarea
-    //         ];
-    //     } else {
-    //         $respuesta = [
-    //             'respuesta' => 'ERROR!!'
-    //         ];
-    //     }
-
-    //     $stmt->close();
-    //     $conn->close();
-
-    // } catch (Exception $e) {
-    //     // en caso de que la conexión falle la cazamos y la mostramos
-    //     $respuesta = ['Exception message: ' => $e->getMessage()];
-    // }
     echo json_encode($respuesta);
 }
