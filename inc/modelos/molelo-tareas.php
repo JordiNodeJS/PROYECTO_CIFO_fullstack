@@ -3,8 +3,6 @@
 $tarea = $_POST['tarea'];
 $accion =  $_POST['type_action'];
 $id_proyecto = (int) $_POST['id_proyecto'];
-// echo json_encode($_POST);
-
 
 
 
@@ -18,22 +16,19 @@ if ($accion == 'crear') {
         ":tarea" => $tarea,
         ":id_proyecto" => $id_proyecto
     ]);
-    // $number_of_rows = $stmt->fetchColumn();
-    // echo $stmt->fetchColumn();
-    if ($stmt->rowCount()){
-    // if ($number_of_rows){
-                $respuesta = [
-                    'response' => 'right',
-                    // 'id_inserted' => $number_of_rows,
-                    'id_inserted' => $stmt->rowCount(),
-                    'type_action' => $accion,
-                    'tarea' => $tarea
-                ];
 
-     } else {
-                $respuesta = [
-                    'respuesta' => 'ERROR!!'
-                ];
+    if (true) {
+
+        $respuesta = [
+            'response' => 'right',
+            'id_inserted' =>  $pdo->lastInsertId(),
+            'type_action' => $accion,
+            'tarea' => $tarea
+        ];
+    } else {
+        $respuesta = [
+            'respuesta' => 'ERROR!!'
+        ];
     }
 
     $pdo = null;
