@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 class Conexion extends PDO
 {
@@ -8,6 +12,7 @@ class Conexion extends PDO
     private $user = "root";
     private $pw = "";
 
+    // Free Web Hosting - infinityfree
     // private $typedb = "mysql";
     // private $host = "sql108.epizy.com";
     // private $dbname = "epiz_28011271_cifo";

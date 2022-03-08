@@ -262,22 +262,19 @@ function projectTrash(e){
       }
     })
 
-
-
 }
 }
 
 
 // step 4: eliminando las tareas de la base de datos, tro lo ló
 function deleteTaskDB(task){
+
   const idTask = task.id.split('_')
-  // console.log(idTask[1]);
   const URL = 'inc/modelos/modelo-delete.php'
 
   const formData = new FormData()
   formData.append('id', idTask[1])
   formData.append('type', 'delete')
-
 
   fetch(URL, {
     method: 'POST',

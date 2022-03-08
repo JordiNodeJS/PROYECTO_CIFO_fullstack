@@ -69,7 +69,7 @@ body {
   background-color: var(--light-shades);
 }
 .flex {
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 .flex.red {
@@ -171,7 +171,8 @@ body {
   color: var(--light-accent);
 }
 
-.campo a, .alert{
+.campo a,
+.alert {
   text-transform: uppercase;
   font-weight: 700;
   color: black;
@@ -191,23 +192,28 @@ body {
   overflow: hidden;
 
   background-color: var(--light-accent);
-
   background-position: center;
-  padding: 1rem;
-  height: 114px;
+  box-shadow: 10px 8px 15px -9px #000000;
+}
+.title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 10px 8px 15px -9px #000000;
+  padding: 1rem;
+  height: 114px;
+  font-size: 0.7rem;
 }
-.barra h1 {
-  padding: 50px;
+.title h1 {
+  font-size: 1.3rem;
+}
+.barra .title {
+  /* padding: 50px; */
   position: relative;
   z-index: 2;
+  margin: 0;
 
   color: white;
-  margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 .barra a {
   color: white;
@@ -229,15 +235,61 @@ body {
   background-size: cover;
 }
 
-
-
-/*** sidebar**/
 .contenedor-proyectos {
-  min-height: 100vh;
-  max-width: 300px;
+  height: 100vh;
+  /* max-width: 300px; */
   background-color: var(--light-accent);
   padding-top: 1rem;
 }
+
+@media (max-width: 700px) {
+  /* styles for mobile browsers smaller than 700px; */
+  :root {
+    --light-shades: #f1d588;
+    --light-accent: #b3410d;
+    --light-accent-test: #b3410d;
+    --main-brand-color: #247477;
+    --dark-shades: #b3410d;
+
+    --scrollbarBG: #cfd8dc;
+    --thumbBG: #90a4ae;
+  }
+  .flex.red {
+    color: #ad8681;
+}
+.campo input[type='text'], .campo input[type='password'] {
+
+  background-color: #f1d588;
+  color: var(--light-accent);
+
+  box-shadow: inset 0px 1px 8px 0px #f1d588;
+
+}
+  .contenedor-proyectos {
+    height: auto;
+    padding-top: 1rem;
+  }
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 60px);
+  }
+  .acciones{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+  }
+  .fa-check-circle{
+    padding-bottom: 0.7rem;
+  }
+}
+
+
+
+
+/** sidebar **/
+
 .panel {
   padding: 1rem;
   margin: 1rem;
@@ -314,7 +366,6 @@ body {
   border-radius: 4px;
   transition: background-color 0.2s ease-in-out;
   box-shadow: 0px 10px 13px -7px #00000041, 6px 5px 11px 0px rgb(0 0 0 / 0%);
-
 }
 
 /** Listado Pendientes **/
