@@ -19,19 +19,19 @@ if ($accion == 'crear') {
 
     if (true) {
 
-        $respuesta = [
+        $response = [
             'response' => 'right',
             'id_inserted' =>  $pdo->lastInsertId(),
             'type_action' => $accion,
             'tarea' => $tarea
         ];
     } else {
-        $respuesta = [
-            'respuesta' => 'ERROR!!'
+        $response = [
+            'response' => 'ERROR!!'
         ];
     }
 
     $pdo = null;
 
-    echo json_encode($respuesta);
+    echo json_encode($response);
 }
