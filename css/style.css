@@ -242,51 +242,6 @@ body {
   padding-top: 1rem;
 }
 
-@media (max-width: 700px) {
-  /* styles for mobile browsers smaller than 700px; */
-  :root {
-    --light-shades: #f1d588;
-    --light-accent: #b3410d;
-    --light-accent-test: #b3410d;
-    --main-brand-color: #247477;
-    --dark-shades: #b3410d;
-
-    --scrollbarBG: #cfd8dc;
-    --thumbBG: #90a4ae;
-  }
-  .flex.red {
-    color: #ad8681;
-}
-.campo input[type='text'], .campo input[type='password'] {
-
-  background-color: #f1d588;
-  color: var(--light-accent);
-
-  box-shadow: inset 0px 1px 8px 0px #f1d588;
-
-}
-  .contenedor-proyectos {
-    height: auto;
-    padding-top: 1rem;
-  }
-  .contenedor {
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 60px);
-  }
-  .acciones{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: center;
-  }
-  .fa-check-circle{
-    padding-bottom: 0.7rem;
-  }
-}
-
-
-
 
 /** sidebar **/
 
@@ -357,6 +312,7 @@ body {
 .contenido-principal h1 span {
   font-weight: 400;
 }
+
 .agregar-tarea {
   max-width: 800px;
   width: 90%;
@@ -408,4 +364,60 @@ body {
   text-align: center;
   color: white;
   font-size: 1.2rem;
+}
+
+
+@media screen and (max-width: 700px) {
+  /* styles for mobile browsers smaller than 700px; */
+
+  :root {
+    --light-shades: #f1d588;
+    --light-accent: #b3410d;
+    --light-accent-test: #b3410d;
+    --main-brand-color: #247477;
+    --dark-shades: #b3410d;
+
+    --scrollbarBG: #cfd8dc;
+    --thumbBG: #90a4ae;
+  }
+  .flex.red {
+    color: #ad8681;
+}
+.campo input[type='text'], .campo input[type='password'] {
+
+  background-color: #f1d588;
+  color: var(--light-accent);
+
+  box-shadow: inset 0px 1px 8px 0px #f1d588;
+
+}
+  .contenedor-proyectos {
+    height: auto;
+    padding-top: 1rem;
+  }
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 60px);
+  }
+  .acciones{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+  }
+  .fa-check-circle{
+    padding-bottom: 0.7rem;
+  }
+
+   .campo label {
+    text-align: unset;
+  }
+  .agregar-tarea, .listado-pendientes {
+    background-color: var(--light-accent);
+   }
+   .checked {
+     color: var(--main-brand-color);
+   }
+
 }
