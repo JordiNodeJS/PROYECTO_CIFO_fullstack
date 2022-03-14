@@ -25,20 +25,25 @@ if (isset($_GET['cerrar_sesion'])) {
 
 
     <form action="#" id="formulario" class="caja-login" method="post">
-        <div class="campo">
-            <label for="usuario"> <i class="fa fa-user input-icon"></i> </label>
+        <div class="campo fontuser">
+            <label for="usuario"> <i class="fa fa-user"></i> </label>
 
             <input type="text" name="usuario" id="usuario" placeholder="Usuario">
         </div>
-        <div class="campo">
+        <div class="campo fontuser">
 
-            <label  for="password"> <i class="fa fa-lock input-icon"></i> </label>
+            <label  for="password"> <i class="fa fa-lock"></i> </label>
                 <input type="password" name="password" id="password" placeholder="Password">
 
         </div>
         <div class="campo enviar">
+
             <input type="hidden" id="tipo" value="login">
-            <input type="submit" class="boton" value="Iniciar Sesión">
+            <button type="submit" class="boton">Iniciar Sesión
+            <i class="fa fa-arrow-right"></i>
+        </button>
+
+            <!-- <input type="submit" class="boton" value="Iniciar Sesión"> -->
         </div>
 
         <div class="campo">

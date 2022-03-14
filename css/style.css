@@ -186,6 +186,16 @@ body {
 }
 
 /* input icon */
+.fontuser {
+  position: relative;
+}
+.fontuser i{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: gray;
+}
+
 
 /** Barra **/
 /* https://www.digitalocean.com/community/tutorials/how-to-change-a-css-background-images-opacity-es */
