@@ -6,6 +6,12 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 class Conexion extends PDO
 {
+    // private $typedb = "mysql";
+    // private $host = "fdb32.awardspace.net";
+    // private $dbname = "4055208_wpress5415edd6";
+    // private $user = "4055208_wpress5415edd6";
+    // private $pw = "aQa43Dg_gyu-d24Agqas";
+
     private $typedb = "mysql";
     private $host = "localhost";
     private $dbname = "bookmarks";
