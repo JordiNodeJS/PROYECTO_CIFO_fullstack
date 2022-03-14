@@ -38,13 +38,14 @@ function nuevoProyecto(e) {
   const $inputNuevoProyecto = document.querySelector('#nuevo-proyecto')
   const $btnAgregarProyecto = document.querySelector('#btn-agregar-proyecto')
 
-  //   $inputNuevoProyecto.addEventListener('keypress', e => {
-  //     const tecla = e.key
-  //     if (tecla == 'Enter') {
-  //       guardarProyectoDB($inputNuevoProyecto.value)
-  //       $listaProyectos.removeChild($nuevoProyecto)
-  //     }
-  //   })
+  $inputNuevoProyecto.addEventListener('keypress', e => {
+      const tecla = e.key
+      if (tecla == 'Enter') {
+        guardarProyectoDB($inputNuevoProyecto.value)
+        $listaProyectos.removeChild($nuevoProyecto)
+        eventListeners()
+      }
+    })
   $btnAgregarProyecto.addEventListener('click', e => {
     guardarProyectoDB($inputNuevoProyecto.value)
     $listaProyectos.removeChild($nuevoProyecto)
