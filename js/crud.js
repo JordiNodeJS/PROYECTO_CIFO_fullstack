@@ -234,9 +234,10 @@ function projectTrash(e){
           background: '#f1d588',
           confirmButtonColor: '#247477',
           showConfirmButton: false,
-        })
+          timer: 2000
+        }).then( () => e.target.parentElement.remove() )
 
-        e.target.parentElement.remove()
+
 
         const projectId = e.target.id.split('_')
         console.log(projectId[1])
