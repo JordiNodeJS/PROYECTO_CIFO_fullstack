@@ -187,7 +187,6 @@ function addingTask(e) {
 // delegation method on addEventListener
 function actionTask(e) {
   e.preventDefault()
-  // console.log(e.target);
   if (e.target.classList.contains('fa-check-circle')) {
     if (e.target.classList.contains('checked')) {
       e.target.classList.remove('checked')
@@ -266,7 +265,7 @@ function projectTrash(e){
 }
 
 
-// step 4: eliminando las tareas de la base de datos, tro lo ló
+// eliminando las tareas de la base de datos
 function deleteTaskDB(task){
 
   const idTask = task.id.split('_')
@@ -306,16 +305,3 @@ function changeTaskstatus(task, state) {
     .then(data => console.log(data))
     .catch(e => console.log('hubo un error en el fetch', e))
 }
-
-
-
-// function guardarProyectoDB(nombreProyecto) {
-//   console.log(nombreProyecto)
-//   const nuevoProyecto = document.createElement('li')
-//   nuevoProyecto.innerHTML = `
-//     <a href="#">
-//         ${nombreProyecto}
-//     </a>
-//   `
-//   $listaProyectos.appendChild(nuevoProyecto)
-// }

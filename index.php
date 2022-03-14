@@ -7,42 +7,21 @@ require_once 'inc/templates/barra.php';
 // Obtener el ID de la URL
 (isset($_GET['id_proyecto'])) ? $id_proyecto = $_GET['id_proyecto'] : $id_proyecto = null;
 
-
 ?>
 
-
-
 <div class="contenedor">
-    <?php
-    require_once 'inc/templates/sidebar.php';
-
-    ?>
-
+    <?php   require_once 'inc/templates/sidebar.php';     ?>
     <main class="contenido-principal">
         <h1>
             <?php
-            // echo "<pre>";
-            // var_dump( obtenerNombreProyecto($id_proyecto) );
-            // echo "</pre>";
-            // echo "<span>". obtenerNombreProyecto($id_proyecto) . "</span>"  ;
-            // die("debugging");
-
-
-
             $proyecto = CRUD::obtenerNombreProyecto($id_proyecto);
-            // echo "<pre>";
-            // print_r( $proyecto );
-            // echo "</pre>";
+
             if ($proyecto) : ?>
                 <?php foreach ($proyecto as $item) : ?>
                     <span><?= $item['nombre']; ?></span>
 
                     <?php endforeach;
-
-
                 ?>
-
-
         </h1>
 
         <form action="#" class="agregar-tarea">
@@ -60,9 +39,7 @@ require_once 'inc/templates/barra.php';
             else :
                 echo "Selecciona un proyecto";
             endif;
-
     ?>
-
 
     <h2>Listado de tareas:</h2>
 
@@ -71,11 +48,6 @@ require_once 'inc/templates/barra.php';
             <?php
             // Fetching currents tasks FROM proyecto
             $tareas = CRUD::obtenerTareasProyecto($id_proyecto);
-            // echo "<pre>";
-            // print_r($tareas);
-            // echo "longitud del array: ".count($tareas);
-            // echo "</pre>";
-
             if ($tareas !== false){
                 // if ($tareas->num_rows > 0) {
                 if ( count($tareas) > 0) {
@@ -95,17 +67,10 @@ require_once 'inc/templates/barra.php';
                     echo '<p id="warning">No hay tareas</p>';
                 }
             }
-            // die("::::::debugging::::::");
             ?>
-
-
         </ul>
     </div>
     </main>
 </div>
-<!--.contenedor-->
 
-
-<?php
-require_once 'inc/templates/footer.php'
-?>
+<?php require_once 'inc/templates/footer.php' ?>

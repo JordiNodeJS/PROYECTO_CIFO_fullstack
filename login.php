@@ -3,21 +3,11 @@ session_start();
 require_once 'inc/funciones/CRUD.class.php';
 require_once 'inc/templates/header.php';
 
-// echo "<pre>";
-// print_r($_SESSION);
-// // print_r($_GET);
-// echo "</pre>";
-
 if (isset($_GET['cerrar_sesion'])) {
     $_SESSION = [];
     session_destroy();
 }
 
-
-// echo "<pre>";
-// print_r($_SESSION);
-// print_r($_GET);
-// echo "</pre>";
 ?>
 
 <div class="contenedor-formulario">
@@ -52,6 +42,4 @@ if (isset($_GET['cerrar_sesion'])) {
     </form>
 </div>
 
-<?php
-require_once 'inc/templates/footer.php'
-?>
+<?php require_once 'inc/templates/footer.php' ?>

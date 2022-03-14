@@ -6,10 +6,9 @@ const validarRegistro = e => {
   let usuario = document.querySelector('#usuario').value,
     password = document.querySelector('#password').value,
     tipo = document.querySelector('#tipo').value
-  // console.log(usuario, password)
 
   if (usuario === '' || password === '') {
-    // la validación se falló, uah, uah, uah
+    // la validación falló
     Swal.fire({
       icon: 'error',
       title: '¡Vaya!',
@@ -61,11 +60,6 @@ const validarRegistro = e => {
 
     // con este método, en caso de que el campo sea un valor oculto, se añade ese campo con este método
     formData.append('accion', tipo)
-
-    // debugging
-    // console.log(formData.get('usuario'));
-    // console.log(formData.get('password'));
-    // console.log(formData.get('accion'));
 
     fetch(URL, {
       method: 'POST',
